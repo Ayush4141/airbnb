@@ -6,6 +6,7 @@ import Navbar from "./components/navbar/Navbar";
 import ClientOnly from "./components/ClientOnly";
 import Modal from "./components/modals/Modal";
 import RegisterModal from "./components/modals/RegisterModal";
+import ToasterProvider from "./providers/ToasterProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 const font = Nunito({
@@ -26,7 +27,8 @@ export default function RootLayout({
     <html lang="en">
       <body className={font.className}>
         <ClientOnly>
-          <RegisterModal/>
+          <ToasterProvider />
+          <RegisterModal />
           {/* <Modal isOpen={true} title="Hello World" actionLabel="Submit" /> */}
           <Navbar />
         </ClientOnly>
