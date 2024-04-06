@@ -9,6 +9,7 @@ import RegisterModal from "./components/modals/RegisterModal";
 import ToasterProvider from "./providers/ToasterProvider";
 import LoginModal from "./components/modals/LoginModal";
 import getCurrentUser from "./actions/getCurrentUser";
+import RentModal from "./components/modals/RentModal";
 
 const inter = Inter({ subsets: ["latin"] });
 const font = Nunito({
@@ -26,7 +27,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const currentUser = await getCurrentUser();
-  console.log("hiii", currentUser)
+  console.log("hiii", currentUser);
   return (
     <html lang="en">
       <body className={font.className}>
@@ -34,6 +35,7 @@ export default async function RootLayout({
           <ToasterProvider />
           <LoginModal />
           <RegisterModal />
+          <RentModal />
           {/* <Modal isOpen={true} title="Hello World" actionLabel="Submit" /> */}
           <Navbar currentUser={currentUser} />
         </ClientOnly>
