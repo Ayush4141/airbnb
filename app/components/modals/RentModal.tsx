@@ -6,6 +6,7 @@ import { useMemo, useState } from "react";
 import Heading from "../Heading";
 import { categories } from "../navbar/Categories";
 import CategoryInput from "../inputs/CategoryInput";
+import { FieldValues, useForm } from "react-hook-form";
 
 enum STEPS {
   CATEGORY = 0,
@@ -20,6 +21,37 @@ const RentModal = () => {
   const rentModal = useRentModal();
 
   const [steps, setSteps] = useState(STEPS.CATEGORY);
+
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    watch,
+    formState: { errors },
+    reset,
+  } = useForm<FieldValues>({
+    defaultValues: {
+      category: "",
+      location: null,
+      guestCount: 1,
+      roomCount: 1,
+      bathroomCount: 1,
+      imageSrc: "",
+      price: 1,
+      title: "",
+      description: "",
+    },
+  });
+
+  const category = watch("category");
+
+  const setcustomValue = (id: string, value: any) => {
+    setValue(id, value, {
+      shouldDirty: true,
+      shouldTouch: true,
+      shouldValidate: true,
+    });
+  };
 
   const onBack = () => {
     setSteps((value) => value - 1);
@@ -53,7 +85,7 @@ const RentModal = () => {
         {categories.map((item) => (
           <div key={item.label} className="col-span-1">
             <CategoryInput
-              onClick={() => {}}
+              onClick={(category) => setcustomValue("category", category)}
               selected={false}
               label={item.label}
               icon={item.icon}
