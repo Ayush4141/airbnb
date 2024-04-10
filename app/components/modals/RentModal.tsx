@@ -27,6 +27,7 @@ const RentModal = () => {
   const rentModal = useRentModal();
 
   const [steps, setSteps] = useState(STEPS.CATEGORY);
+  const [isLoading, setIsLoading] = useState(false);
 
   const {
     register,
@@ -190,6 +191,38 @@ const RentModal = () => {
           label="Title"
           disabled={isLoading}
           register={register}
+          errors={errors}
+          required
+        />
+        <hr />
+        <Input
+          id="description"
+          label="Description"
+          disabled={isLoading}
+          register={register}
+          errors={errors}
+          required
+        />
+      </div>
+    );
+  }
+
+  if (steps === STEPS.PRICE) {
+    bodyContent = (
+      <div className="flex flex-col gap-8">
+        <Heading
+          title="Now, set your price"
+          subtitle="How much do you charge per night"
+        />
+        <Input
+          id="price"
+          label="Price"
+          formatPrice={true}
+          type="number"
+          disabled={isLoading}
+          register={register}
+          errors={errors}
+          required
         />
       </div>
     );
