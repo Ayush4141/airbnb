@@ -205,7 +205,7 @@ const RentModal = () => {
         />
       </div>
     );
-  }
+  } 
 
   if (steps === STEPS.PRICE) {
     bodyContent = (
