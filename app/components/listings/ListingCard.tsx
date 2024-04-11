@@ -1,7 +1,7 @@
 "use client";
 
 import useCountries from "@/app/hooks/useCountries";
-import { SafeUser } from "@/app/types";
+import { SafeListings, SafeUser } from "@/app/types";
 import { Listing, Reservation, User } from "@prisma/client";
 import { useRouter } from "next/navigation";
 import { useCallback, useMemo } from "react";
@@ -12,7 +12,7 @@ import Button from "../Button";
 
 interface ListingCardProps {
   currentUser?: SafeUser | null;
-  data: Listing;
+  data: SafeListings | null;
   reservation: Reservation;
   onAction?: (id: string) => void;
   disabled?: boolean;
@@ -75,7 +75,7 @@ const ListingCard: React.FC<ListingCardProps> = ({
         <div className="aspect-square w-full relative overflow-hidden rounded-xl">
           <Image
             fill
-            src={data.imageSrc}
+            src={data?.imageSrc}
             alt="Listings"
             className="object-cover h-full w-full group-hover:scale-110 transition"
           />
