@@ -10,7 +10,7 @@ export default async function Home() {
     return (
       <ClientOnly>
         <EmptyState showReset />
-      </ClientOnly >
+      </ClientOnly  >
     );
   }
 
