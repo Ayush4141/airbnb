@@ -7,6 +7,7 @@ export default async function getListings() {
         createdAt: "desc",
       },
     });
+    return listings
 
     const safeListings = listings.map((listing) => ({
       ...listings,

@@ -7,7 +7,6 @@ import ListingCard from "./components/listings/ListingCard";
 
 export default async function Home() {
   const listings = await getListings();
-  console.log("hiii1", listings)
   
   const currentUser = await getCurrentUser();
 
@@ -33,9 +32,10 @@ export default async function Home() {
           2xl:grid-cols-6 
           gap-8"
         >
-          {/* {listings.map((listing: any) => {
-            return <ListingCard key={listing.id} currentUser={currentUser} data={listings} />;
-          })} */}
+          {listings.map((listing: any) => {
+            console.log("hiii1", listing)
+            return <ListingCard key={listing.id} currentUser={currentUser} data={listing} />;
+          })}
         </div>
       </Container>
     </ClientOnly>

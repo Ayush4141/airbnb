@@ -29,6 +29,7 @@ const ListingCard: React.FC<ListingCardProps> = ({
   actionId = " ",
   actionLabel,
 }) => {
+    console.log("hiii2", data)
   const router = useRouter();
   const { getByValue } = useCountries();
 
