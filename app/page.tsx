@@ -7,6 +7,7 @@ import ListingCard from "./components/listings/ListingCard";
 
 export default async function Home() {
   const listings = await getListings();
+  console.log("hiii", listings)
   
   const currentUser = await getCurrentUser();
 
@@ -33,7 +34,6 @@ export default async function Home() {
           gap-8"
         >
           {listings.map((listing: any) => {
-            console.log("hiii1", listing)
             return <ListingCard key={listing.id} currentUser={currentUser} data={listing} />;
           })}
         </div>

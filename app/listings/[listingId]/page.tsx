@@ -12,6 +12,7 @@ const ListingPage = async ({ params }: { params: Iparams }) => {
   const listing = await getListingById(params);
   const currentUser = await getCurrentUser();
 
+
   if (!listing) {
     return (
       <ClientOnly>
