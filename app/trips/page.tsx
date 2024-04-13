@@ -6,7 +6,7 @@ import getReservation from "../actions/getReservations";
 import TripsClient from "./TripsClient";
 
 const TripsPage = async () => {
-    console.log("hello");
+
   const currentUser = await getCurrentUser();
   if (!currentUser) {
     return (
