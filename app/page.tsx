@@ -9,7 +9,7 @@ interface HomeProps {
   searchParams: IListingsParams;
 }
 
-const Home = async ({ searchParams } : HomeProps) => {
+const Home = async ({ searchParams }: HomeProps) => {
   const listings = await getListings(searchParams);
 
   const currentUser = await getCurrentUser();
@@ -21,7 +21,7 @@ const Home = async ({ searchParams } : HomeProps) => {
       </ClientOnly>
     );
   }
-
+ 
   return (
     <ClientOnly>
       <Container>
