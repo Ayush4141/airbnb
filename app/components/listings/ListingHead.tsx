@@ -8,8 +8,8 @@ interface ListingHeadProps {
   title: string;
   locationValue: string;
   imageSrc: string;
-  id?: string;
-  currentUser?: SafeUser | null;
+  id: string;
+  currentUser: SafeUser | null;
 }
 
 const ListingHead: React.FC<ListingHeadProps> = ({

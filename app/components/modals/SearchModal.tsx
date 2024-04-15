@@ -142,6 +142,7 @@ const SearchModal = () => {
         />
         <Calendar
           value={dateRange}
+          disabledDates={[]}
           onChange={(value) => setDateRange(value.selection)}
         />
       </div>

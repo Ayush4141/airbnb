@@ -26,15 +26,13 @@ const initialDateRange = {
 };
 
 interface ListingClientPops {
-  reservation?: SafeReservation[];
-  listing: SafeListings & {
-    user: SafeUser;
-  };
-  currentUser?: SafeUser | null;
+  reservation: any;
+  listing: any
+  currentUser: any;
 }
 
 const ListingClient: React.FC<ListingClientPops> = ({
-  reservations = [],
+  reservation = [],
   listing,
   currentUser,
 }) => {
@@ -43,16 +41,16 @@ const ListingClient: React.FC<ListingClientPops> = ({
 
   const disabledDates = useMemo(() => {
     let dates: Date[] = [];
-    reservations.forEach((reservation: any) => {
+    reservation.forEach((reservation1: any) => {
       const range = eachDayOfInterval({
-        start: new Date(reservation.startDate),
-        end: new Date(reservation.endDate),
+        start: new Date(reservation1.startDate),
+        end: new Date(reservation1.endDate),
       });
 
       dates = [...dates, ...range];
     });
     return dates;
-  }, [reservations]);
+  }, [reservation]);
 
   const [isLoading, setIsLoading] = useState(false);
   const [totalPrice, setTotalPrice] = useState(listing.price);

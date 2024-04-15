@@ -7,7 +7,7 @@ export interface IListingsParams {
   bathroomCount?: number;
   startDate?: string;
   endDate?: string;
-  locationVale: string;
+  locationVale?: string;
   category?: string;
 }
 
