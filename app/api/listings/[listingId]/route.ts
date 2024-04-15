@@ -2,13 +2,15 @@ import { NextResponse } from "next/server";
 import prisma from "@/app/libs/prismadb";
 import getCurrentUser from "@/app/actions/getCurrentUser";
 
-interface IParams {}
+interface IParams {
+    listingId?: string
+}
 
 export async function DELETE(
   request: Request,
   { params }: { params: IParams }
 ) {
-  const currentUser = getCurrentUser();
+  const currentUser = await getCurrentUser();
 
   if (!currentUser) {
     return NextResponse.error();
@@ -21,7 +23,7 @@ export async function DELETE(
   }
 
   const listing = await prisma.listing.deleteMany({
-    where: { id: listingId, userId: currentUser.id },
+    where: { id: listingId, userId: currentUser?.id },
   });
 
   return NextResponse.json(listing);

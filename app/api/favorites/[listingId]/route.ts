@@ -18,12 +18,12 @@ export async function POST(
     throw new Error("Invalid ID");
   }
 
-  let favoriteIds = [...(currentUser.favoriteIds || [])];
+  let favoriteIds = [...(currentUser?.favoriteIds || [])];
 
   favoriteIds.push(listingId);
 
   const user = await prisma.user.update({
-    where: { id: currentUser.id },
+    where: { id: currentUser?.id },
     data: { favoriteIds },
   });
 
