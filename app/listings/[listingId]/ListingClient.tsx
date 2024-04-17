@@ -27,7 +27,7 @@ const initialDateRange = {
 
 interface ListingClientPops {
   reservation: any;
-  listing: any
+  listing: any;
   currentUser: any;
 }
 
@@ -43,7 +43,7 @@ const ListingClient: React.FC<ListingClientPops> = ({
     let dates: Date[] = [];
     reservation.forEach((reservation1: any) => {
       const range = eachDayOfInterval({
-        start: new Date(reservation1.startDate),
+        start: new Date(reservation1.startTime),
         end: new Date(reservation1.endDate),
       });
 
@@ -51,6 +51,7 @@ const ListingClient: React.FC<ListingClientPops> = ({
     });
     return dates;
   }, [reservation]);
+
 
   const [isLoading, setIsLoading] = useState(false);
   const [totalPrice, setTotalPrice] = useState(listing.price);
